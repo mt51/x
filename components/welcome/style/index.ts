@@ -3,9 +3,9 @@ import type { FullToken, GenerateStyle, GetDefaultToken } from '../../theme/cssi
 import { genStyleHooks } from '../../theme/genStyleUtils';
 
 // biome-ignore lint/suspicious/noEmptyInterface: ComponentToken need to be empty by default
-export interface ComponentToken {}
+export type ComponentToken = object
 
-export interface WelcomeToken extends FullToken<'Welcome'> {}
+export type WelcomeToken = FullToken<'Welcome'>
 
 const genWelcomeStyle: GenerateStyle<WelcomeToken> = (token) => {
   const { componentCls, calc } = token;

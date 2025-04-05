@@ -101,6 +101,7 @@ class XRequestClass {
   private static instanceBuffer: Map<string | typeof fetch, XRequestClass> = new Map();
 
   private constructor(options: XRequestOptions) {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { baseURL, model, dangerouslyApiKey, ...customOptions } = options;
 
     this.baseURL = options.baseURL;

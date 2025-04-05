@@ -1,5 +1,7 @@
-import { type GetRef, Upload, type UploadProps } from 'antd';
+import { Upload, type UploadProps } from 'antd';
 import React from 'react';
+
+import { type GetRef } from '../_util/type';
 
 export interface SilentUploaderProps {
   children: React.ReactElement;
@@ -10,7 +12,10 @@ export interface SilentUploaderProps {
 /**
  * SilentUploader is only wrap children with antd Upload component.
  */
-function SilentUploader(props: SilentUploaderProps, ref: React.Ref<GetRef<typeof Upload>>) {
+function SilentUploader(
+  props: SilentUploaderProps,
+  ref: React.Ref<GetRef<typeof Upload>>,
+) {
   const { children, upload, rootClassName } = props;
 
   const uploadRef = React.useRef<GetRef<typeof Upload>>(null);
@@ -18,7 +23,12 @@ function SilentUploader(props: SilentUploaderProps, ref: React.Ref<GetRef<typeof
 
   // ============================ Render ============================
   return (
-    <Upload {...upload} showUploadList={false} rootClassName={rootClassName} ref={uploadRef}>
+    <Upload
+      {...upload}
+      showUploadList={false}
+      className={rootClassName}
+      ref={uploadRef}
+    >
       {children}
     </Upload>
   );

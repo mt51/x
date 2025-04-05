@@ -1,13 +1,13 @@
 import { createTheme, useCacheToken } from '@ant-design/cssinjs';
-import { theme as antdTheme } from 'antd';
-import { ignore, unitless } from 'antd/es/theme/useToken';
-import formatToken from 'antd/es/theme/util/alias';
+import antdTheme from '../antd-theme';
+import { ignore, unitless } from '../antd-theme/useToken';
+import formatToken from '../antd-theme/util/alias';
 import React from 'react';
 
 import version from '../version';
 
 import type { Theme } from '@ant-design/cssinjs';
-import type { DesignTokenProviderProps } from 'antd/es/theme/context';
+import type { DesignTokenProviderProps } from '../antd-theme/context';
 import type { AliasToken, GlobalToken, SeedToken } from './cssinjs-utils';
 
 const defaultTheme: Theme<SeedToken, AliasToken> = createTheme(antdTheme.defaultAlgorithm);
@@ -39,6 +39,7 @@ export const getComputedToken = (
   overrideToken: DesignTokenProviderProps['components'] & {
     override?: Partial<AliasToken>;
   },
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   theme: Theme<any, any>,
 ) => {
   const derivativeToken = theme.getDerivativeToken(originToken);

@@ -1,4 +1,4 @@
-import { type GetProp, GetRef, Upload, type UploadProps } from 'antd';
+import { Upload, type UploadProps } from 'antd';
 import classnames from 'classnames';
 import React from 'react';
 
@@ -16,6 +16,8 @@ import PlaceholderUploader, {
 import SilentUploader from './SilentUploader';
 import { AttachmentContext } from './context';
 import useStyle from './style';
+
+import { type GetProp, GetRef } from '../_util/type';
 
 export type SemanticType = 'list' | 'item' | 'placeholder';
 
@@ -40,7 +42,9 @@ export interface AttachmentsProps extends Omit<UploadProps, 'fileList'> {
   disabled?: boolean;
 
   // ============= placeholder =============
-  placeholder?: PlaceholderType | ((type: 'inline' | 'drop') => PlaceholderType);
+  placeholder?:
+    | PlaceholderType
+    | ((type: 'inline' | 'drop') => PlaceholderType);
   getDropContainer?: null | (() => HTMLElement | null | undefined);
 
   // ============== File List ==============
@@ -83,7 +87,8 @@ function Attachments(props: AttachmentsProps, ref: React.Ref<AttachmentsRef>) {
   // ===================== Component Config =========================
   const contextConfig = useXComponentConfig('attachments');
 
-  const { classNames: contextClassNames, styles: contextStyles } = contextConfig;
+  const { classNames: contextClassNames, styles: contextStyles } =
+    contextConfig;
 
   // ============================= Ref =============================
   const containerRef = React.useRef<HTMLDivElement>(null);
@@ -93,7 +98,9 @@ function Attachments(props: AttachmentsProps, ref: React.Ref<AttachmentsRef>) {
   React.useImperativeHandle(ref, () => ({
     nativeElement: containerRef.current,
     upload: (file) => {
-      const fileInput = uploadRef.current?.nativeElement?.querySelector('input[type="file"]');
+      const fileInput =
+        // @ts-ignore
+        uploadRef.current?.querySelector?.('input[type="file"]');
 
       // Trigger native change event
       if (fileInput) {
@@ -116,10 +123,12 @@ function Attachments(props: AttachmentsProps, ref: React.Ref<AttachmentsRef>) {
     value: items,
   });
 
-  const triggerChange: GetProp<AttachmentsProps, 'onChange'> = useEvent((info) => {
-    setFileList(info.fileList);
-    onChange?.(info);
-  });
+  const triggerChange: GetProp<AttachmentsProps, 'onChange'> = useEvent(
+    (info) => {
+      setFileList(info.fileList);
+      onChange?.(info);
+    },
+  );
 
   const mergedUploadProps: UploadProps = {
     ...uploadProps,
@@ -128,13 +137,17 @@ function Attachments(props: AttachmentsProps, ref: React.Ref<AttachmentsRef>) {
   };
 
   const onItemRemove = (item: Attachment) =>
-    Promise.resolve(typeof onRemove === 'function' ? onRemove(item) : onRemove).then((ret) => {
+    Promise.resolve(
+      typeof onRemove === 'function' ? onRemove(item) : onRemove,
+    ).then((ret) => {
       // Prevent removing file
       if (ret === false) {
         return;
       }
 
-      const newFileList = fileList.filter((fileItem) => fileItem.uid !== item.uid);
+      const newFileList = fileList.filter(
+        (fileItem) => fileItem.uid !== item.uid,
+      );
 
       triggerChange({
         file: { ...item, status: 'removed' },
@@ -149,14 +162,18 @@ function Attachments(props: AttachmentsProps, ref: React.Ref<AttachmentsRef>) {
     props?: Pick<PlaceholderProps, 'style'>,
     ref?: React.RefObject<GetRef<typeof Upload>>,
   ) => {
-    const placeholderContent = typeof placeholder === 'function' ? placeholder(type) : placeholder;
+    const placeholderContent =
+      typeof placeholder === 'function' ? placeholder(type) : placeholder;
 
     return (
       <PlaceholderUploader
         placeholder={placeholderContent}
         upload={mergedUploadProps}
         prefixCls={prefixCls}
-        className={classnames(contextClassNames.placeholder, classNames.placeholder)}
+        className={classnames(
+          contextClassNames.placeholder,
+          classNames.placeholder,
+        )}
         style={{
           ...contextStyles.placeholder,
           ...styles.placeholder,
@@ -170,7 +187,11 @@ function Attachments(props: AttachmentsProps, ref: React.Ref<AttachmentsRef>) {
   if (children) {
     renderChildren = (
       <>
-        <SilentUploader upload={mergedUploadProps} rootClassName={rootClassName} ref={uploadRef}>
+        <SilentUploader
+          upload={mergedUploadProps}
+          rootClassName={rootClassName}
+          ref={uploadRef}
+        >
           {children}
         </SilentUploader>
         <DropArea
@@ -222,7 +243,11 @@ function Attachments(props: AttachmentsProps, ref: React.Ref<AttachmentsRef>) {
           }}
           imageProps={imageProps}
         />
-        {getPlaceholderNode('inline', hasFileList ? { style: { display: 'none' } } : {}, uploadRef)}
+        {getPlaceholderNode(
+          'inline',
+          hasFileList ? { style: { display: 'none' } } : {},
+          uploadRef,
+        )}
         <DropArea
           getDropContainer={getDropContainer || (() => containerRef.current)}
           prefixCls={prefixCls}
@@ -245,7 +270,9 @@ function Attachments(props: AttachmentsProps, ref: React.Ref<AttachmentsRef>) {
   );
 }
 
-const ForwardAttachments = React.forwardRef(Attachments) as React.ForwardRefExoticComponent<
+const ForwardAttachments = React.forwardRef(
+  Attachments,
+) as React.ForwardRefExoticComponent<
   AttachmentsProps & React.RefAttributes<AttachmentsRef>
 > & {
   FileCard: typeof FileListCard;

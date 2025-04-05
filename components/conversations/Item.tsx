@@ -1,5 +1,5 @@
 import { EllipsisOutlined } from '@ant-design/icons';
-import { Dropdown, Tooltip, Typography } from 'antd';
+import { Dropdown, Tooltip, Typography, Menu } from 'antd';
 import type { MenuProps } from 'antd';
 import classnames from 'classnames';
 import React, { useMemo } from 'react';
@@ -16,7 +16,10 @@ export interface ConversationsItemProps
   menu?: MenuProps & {
     trigger?:
       | React.ReactNode
-      | ((conversation: Conversation, info: { originNode: React.ReactNode }) => React.ReactNode);
+      | ((
+          conversation: Conversation,
+          info: { originNode: React.ReactNode },
+        ) => React.ReactNode);
   };
   active?: boolean;
   onClick?: (info: Conversation) => void;
@@ -27,7 +30,16 @@ const stopPropagation: React.MouseEventHandler<HTMLSpanElement> = (e) => {
 };
 
 const ConversationsItem: React.FC<ConversationsItemProps> = (props) => {
-  const { prefixCls, info, className, direction, onClick, active, menu, ...restProps } = props;
+  const {
+    prefixCls,
+    info,
+    className,
+    direction,
+    onClick,
+    active,
+    menu,
+    ...restProps
+  } = props;
 
   const domProps = pickAttrs(restProps, {
     aria: true,
@@ -74,7 +86,10 @@ const ConversationsItem: React.FC<ConversationsItemProps> = (props) => {
 
   const renderMenuTrigger = (conversation: Conversation) => {
     const originTriggerNode = (
-      <EllipsisOutlined onClick={stopPropagation} className={`${prefixCls}-menu-icon`} />
+      <EllipsisOutlined
+        onClick={stopPropagation}
+        className={`${prefixCls}-menu-icon`}
+      />
     );
     if (trigger) {
       return typeof trigger === 'function'
@@ -88,8 +103,8 @@ const ConversationsItem: React.FC<ConversationsItemProps> = (props) => {
   return (
     <Tooltip
       title={info.label}
-      open={inEllipsis && opened}
-      onOpenChange={setOpened}
+      visible={inEllipsis && opened}
+      onVisibleChange={setOpened}
       placement={direction === 'rtl' ? 'left' : 'right'}
     >
       <li {...domProps} className={mergedCls} onClick={onInternalClick}>
@@ -104,11 +119,11 @@ const ConversationsItem: React.FC<ConversationsItemProps> = (props) => {
         </Typography.Text>
         {!disabled && menu && (
           <Dropdown
-            menu={dropdownMenu}
+            overlay={<Menu {...dropdownMenu} />}
             placement={direction === 'rtl' ? 'bottomLeft' : 'bottomRight'}
             trigger={['click']}
             disabled={disabled}
-            onOpenChange={onOpenChange}
+            onVisibleChange={onOpenChange}
           >
             {renderMenuTrigger(info)}
           </Dropdown>

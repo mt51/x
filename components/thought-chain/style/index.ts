@@ -4,11 +4,11 @@ import { genStyleHooks } from '../../theme/genStyleUtils';
 import { THOUGHT_CHAIN_ITEM_STATUS } from '../Item';
 
 import { type CSSObject, unit } from '@ant-design/cssinjs';
-import type { ConfigProviderProps } from 'antd';
+import type { ConfigProviderProps } from 'antd/es/config-provider';
 import type { FullToken, GenerateStyle } from '../../theme/cssinjs-utils';
 
 // biome-ignore lint/suspicious/noEmptyInterface: ComponentToken need to be empty by default
-export interface ComponentToken {}
+export type ComponentToken = object
 
 export interface ThoughtChainToken extends FullToken<'ThoughtChain'> {
   /**

@@ -1,7 +1,8 @@
-import { Flex, GetRef, Typography, Upload, type UploadProps } from 'antd';
+import { Typography, Upload, type UploadProps } from 'antd';
 import classNames from 'classnames';
 import React from 'react';
 import { AttachmentContext } from './context';
+import Flex from '../flex';
 
 export interface PlaceholderConfig {
   icon?: React.ReactNode;
@@ -19,7 +20,7 @@ export interface PlaceholderProps {
   style?: React.CSSProperties;
 }
 
-function Placeholder(props: PlaceholderProps, ref: React.Ref<GetRef<typeof Upload>>) {
+function Placeholder(props: PlaceholderProps) {
   const { prefixCls, placeholder = {}, upload, className, style } = props;
 
   const placeholderCls = `${prefixCls}-placeholder`;
@@ -37,7 +38,9 @@ function Placeholder(props: PlaceholderProps, ref: React.Ref<GetRef<typeof Uploa
 
   const onDragLeave = (e: React.DragEvent) => {
     // Leave the div should end
-    if (!(e.currentTarget as HTMLElement).contains(e.relatedTarget as HTMLElement)) {
+    if (
+      !(e.currentTarget as HTMLElement).contains(e.relatedTarget as HTMLElement)
+    ) {
       setDragIn(false);
     }
   };
@@ -50,14 +53,22 @@ function Placeholder(props: PlaceholderProps, ref: React.Ref<GetRef<typeof Uploa
   const node = React.isValidElement(placeholder) ? (
     placeholder
   ) : (
-    <Flex align="center" justify="center" vertical className={`${placeholderCls}-inner`}>
+    <Flex
+      align="center"
+      justify="center"
+      vertical
+      className={`${placeholderCls}-inner`}
+    >
       <Typography.Text className={`${placeholderCls}-icon`}>
         {placeholderConfig.icon}
       </Typography.Text>
       <Typography.Title className={`${placeholderCls}-title`} level={5}>
         {placeholderConfig.title}
       </Typography.Title>
-      <Typography.Text className={`${placeholderCls}-description`} type="secondary">
+      <Typography.Text
+        className={`${placeholderCls}-description`}
+        type="secondary"
+      >
         {placeholderConfig.description}
       </Typography.Text>
     </Flex>
@@ -82,7 +93,6 @@ function Placeholder(props: PlaceholderProps, ref: React.Ref<GetRef<typeof Uploa
       <Upload.Dragger
         showUploadList={false}
         {...upload}
-        ref={ref}
         style={{ padding: 0, border: 0, background: 'transparent' }}
       >
         {node}

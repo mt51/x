@@ -1,4 +1,4 @@
-import { Cascader, Flex } from 'antd';
+import { Cascader } from 'antd';
 import type { CascaderProps } from 'antd';
 import classnames from 'classnames';
 import { useEvent, useMergedState } from 'rc-util';
@@ -7,6 +7,8 @@ import useXComponentConfig from '../_util/hooks/use-x-component-config';
 import { useXProviderContext } from '../x-provider';
 import useStyle from './style';
 import useActive from './useActive';
+
+import Flex from '../flex';
 
 export type SuggestionItem = {
   label: React.ReactNode;
@@ -77,14 +79,16 @@ function Suggestion<T = any>(props: SuggestionProps<T>) {
     onOpenChange?.(nextOpen);
   };
 
-  const onTrigger: RenderChildrenProps<T>['onTrigger'] = useEvent((nextInfo) => {
-    if (nextInfo === false) {
-      triggerOpen(false);
-    } else {
-      setInfo(nextInfo);
-      triggerOpen(true);
-    }
-  });
+  const onTrigger: RenderChildrenProps<T>['onTrigger'] = useEvent(
+    (nextInfo) => {
+      if (nextInfo === false) {
+        triggerOpen(false);
+      } else {
+        setInfo(nextInfo);
+        triggerOpen(true);
+      }
+    },
+  );
 
   const onClose = () => {
     triggerOpen(false);
@@ -97,17 +101,27 @@ function Suggestion<T = any>(props: SuggestionProps<T>) {
   );
 
   // =========================== Cascader ===========================
-  const optionRender: CascaderProps<SuggestionItem>['optionRender'] = (node) => {
+  const optionRender: CascaderProps<SuggestionItem>['dropdownRender'] = () => {
     return (
-      <Flex className={itemCls}>
-        {node.icon && <div className={`${itemCls}-icon`}>{node.icon}</div>}
-        {node.label}
-        {node.extra && <div className={`${itemCls}-extra`}>{node.extra}</div>}
-      </Flex>
+      <>
+        {itemList.map((node) => {
+          return (
+            <Flex className={itemCls}>
+              {node.icon && (
+                <div className={`${itemCls}-icon`}>{node.icon}</div>
+              )}
+              {node.label}
+              {node.extra && (
+                <div className={`${itemCls}-extra`}>{node.extra}</div>
+              )}
+            </Flex>
+          );
+        })}
+      </>
     );
   };
 
-  const onInternalChange = (valuePath: string[]) => {
+  const onInternalChange = (valuePath: any[]) => {
     if (onSelect) {
       onSelect(valuePath[valuePath.length - 1]);
     }
@@ -115,7 +129,13 @@ function Suggestion<T = any>(props: SuggestionProps<T>) {
   };
 
   // ============================= a11y =============================
-  const [activePath, onKeyDown] = useActive(itemList, mergedOpen, isRTL, onInternalChange, onClose);
+  const [activePath, onKeyDown] = useActive(
+    itemList,
+    mergedOpen,
+    isRTL,
+    onInternalChange,
+    onClose,
+  );
 
   // =========================== Children ===========================
   const childNode = children?.({ onTrigger, onKeyDown });
@@ -132,8 +152,8 @@ function Suggestion<T = any>(props: SuggestionProps<T>) {
           onClose();
         }
       }}
-      optionRender={optionRender}
-      rootClassName={classnames(rootClassName, prefixCls, hashId, cssVarCls, {
+      dropdownRender={optionRender}
+      className={classnames(rootClassName, prefixCls, hashId, cssVarCls, {
         [`${prefixCls}-block`]: block,
       })}
       onChange={onInternalChange}

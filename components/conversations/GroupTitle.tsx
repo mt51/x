@@ -1,7 +1,8 @@
 import { Typography } from 'antd';
-import type { ConfigProviderProps, GetProp } from 'antd';
 import classnames from 'classnames';
 import React from 'react';
+import type { GetProp } from '../_util/type';
+import { ConfigProviderProps } from 'antd/es/config-provider';
 
 export interface GroupTitleProps {
   children?: React.ReactNode;

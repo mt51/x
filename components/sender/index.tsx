@@ -1,4 +1,4 @@
-import { Flex, Input } from 'antd';
+import { Input } from 'antd';
 import classnames from 'classnames';
 import { useMergedState } from 'rc-util';
 import pickAttrs from 'rc-util/lib/pickAttrs';
@@ -16,7 +16,9 @@ import SpeechButton from './components/SpeechButton';
 import useStyle from './style';
 import useSpeech, { type AllowSpeech } from './useSpeech';
 
-import type { InputRef as AntdInputRef, ButtonProps, GetProps } from 'antd';
+import type { InputRef as AntdInputRef, ButtonProps } from 'antd';
+import Flex from '../flex';
+import { GetProps } from '../_util/type';
 
 export type SubmitType = 'enter' | 'shiftEnter' | false;
 
@@ -38,9 +40,14 @@ export type ActionsRender = (
   },
 ) => React.ReactNode;
 
-export type FooterRender = (info: { components: ActionsComponents }) => React.ReactNode;
+export type FooterRender = (info: {
+  components: ActionsComponents;
+}) => React.ReactNode;
 export interface SenderProps
-  extends Pick<TextareaProps, 'placeholder' | 'onKeyPress' | 'onFocus' | 'onBlur'> {
+  extends Pick<
+    TextareaProps,
+    'placeholder' | 'onKeyPress' | 'onFocus' | 'onBlur'
+  > {
   prefixCls?: string;
   defaultValue?: string;
   value?: string;
@@ -51,7 +58,9 @@ export interface SenderProps
   onSubmit?: (message: string) => void;
   onChange?: (
     value: string,
-    event?: React.FormEvent<HTMLTextAreaElement> | React.ChangeEvent<HTMLTextAreaElement>,
+    event?:
+      | React.FormEvent<HTMLTextAreaElement>
+      | React.ChangeEvent<HTMLTextAreaElement>,
   ) => void;
   onCancel?: VoidFunction;
   onKeyDown?: React.KeyboardEventHandler<any>;
@@ -182,9 +191,12 @@ const ForwardSender = React.forwardRef<SenderRef, SenderProps>((props, ref) => {
   };
 
   // ============================ Speech ============================
-  const [speechPermission, triggerSpeech, speechRecording] = useSpeech((transcript) => {
-    triggerValueChange(`${innerValue} ${transcript}`);
-  }, allowSpeech);
+  const [speechPermission, triggerSpeech, speechRecording] = useSpeech(
+    (transcript) => {
+      triggerValueChange(`${innerValue} ${transcript}`);
+    },
+    allowSpeech,
+  );
 
   // ========================== Components ==========================
   const InputTextArea = getComponent(components, ['input'], Input.TextArea);
@@ -303,17 +315,28 @@ const ForwardSender = React.forwardRef<SenderRef, SenderProps>((props, ref) => {
 
   // ============================ Footer ============================
   const footerNode =
-    typeof footer === 'function' ? footer({ components: sharedRenderComponents }) : footer || null;
+    typeof footer === 'function'
+      ? footer({ components: sharedRenderComponents })
+      : footer || null;
 
   // ============================ Render ============================
   return wrapCSSVar(
-    <div ref={containerRef} className={mergedCls} style={{ ...contextConfig.style, ...style }}>
+    <div
+      ref={containerRef}
+      className={mergedCls}
+      style={{ ...contextConfig.style, ...style }}
+    >
       {/* Header */}
       {header && (
-        <SendHeaderContext.Provider value={{ prefixCls }}>{header}</SendHeaderContext.Provider>
+        <SendHeaderContext.Provider value={{ prefixCls }}>
+          {header}
+        </SendHeaderContext.Provider>
       )}
       <ActionButtonContext.Provider value={actionsButtonContextProps}>
-        <div className={`${prefixCls}-content`} onMouseDown={onContentMouseDown}>
+        <div
+          className={`${prefixCls}-content`}
+          onMouseDown={onContentMouseDown}
+        >
           {/* Prefix */}
           {prefix && (
             <div
@@ -333,7 +356,11 @@ const ForwardSender = React.forwardRef<SenderRef, SenderProps>((props, ref) => {
             {...inputProps}
             disabled={disabled}
             style={{ ...contextConfig.styles.input, ...styles.input }}
-            className={classnames(inputCls, contextConfig.classNames.input, classNames.input)}
+            className={classnames(
+              inputCls,
+              contextConfig.classNames.input,
+              classNames.input,
+            )}
             autoSize={autoSize}
             value={innerValue}
             onChange={(event) => {
@@ -348,7 +375,7 @@ const ForwardSender = React.forwardRef<SenderRef, SenderProps>((props, ref) => {
             onCompositionEnd={onInternalCompositionEnd}
             onKeyDown={onKeyDown}
             onPaste={onInternalPaste}
-            variant="borderless"
+            bordered={false}
             readOnly={readOnly}
           />
           {/* Action List */}

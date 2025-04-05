@@ -5,7 +5,8 @@ import ActionButton, { ActionButtonContext } from '../ActionButton';
 import RecordingIcon from './RecordingIcon';
 
 function SpeechButton(props: ButtonProps, ref: React.Ref<HTMLButtonElement>) {
-  const { speechRecording, onSpeechDisabled, prefixCls } = React.useContext(ActionButtonContext);
+  const { speechRecording, onSpeechDisabled, prefixCls } =
+    React.useContext(ActionButtonContext);
 
   let icon: React.ReactNode = null;
   if (speechRecording) {
@@ -20,7 +21,7 @@ function SpeechButton(props: ButtonProps, ref: React.Ref<HTMLButtonElement>) {
     <ActionButton
       icon={icon}
       color="primary"
-      variant="text"
+      type="text"
       {...props}
       action="onSpeech"
       ref={ref}

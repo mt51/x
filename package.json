@@ -1,6 +1,6 @@
 {
-  "name": "@ant-design/x",
-  "version": "1.1.0",
+  "name": "x2",
+  "version": "0.0.1-beta.0",
   "description": "Craft AI-driven interfaces effortlessly",
   "keywords": [
     "AI",
@@ -145,9 +145,9 @@
     "@types/prismjs": "^1.26.4",
     "@types/progress": "^2.0.7",
     "@types/qs": "^6.9.16",
-    "@types/react": "^19.0.2",
+    "@types/react": "^16.14.0",
     "@types/react-copy-to-clipboard": "^5.0.7",
-    "@types/react-dom": "^19.0.2",
+    "@types/react-dom": "^16.0.9",
     "@types/react-highlight-words": "^0.20.0",
     "@types/react-resizable": "^3.0.8",
     "@types/semver": "^7.5.8",
@@ -158,7 +158,6 @@
     "@umijs/fabric": "^4.0.1",
     "adm-zip": "^0.5.16",
     "ali-oss": "^6.21.0",
-    "antd": "^5.22.7",
     "antd-style": "^3.6.3",
     "antd-token-previewer": "^2.0.8",
     "axios": "^1.7.7",
@@ -226,10 +225,11 @@
     "rc-footer": "^0.6.8",
     "rc-resize-observer": "^1.4.0",
     "rc-virtual-list": "^3.14.5",
-    "react": "^19.0.0",
+    "antd": "^4.22.8",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
     "react-copy-to-clipboard": "^5.1.0",
     "react-countup": "^6.5.3",
-    "react-dom": "^19.0.0",
     "react-highlight-words": "^0.20.0",
     "react-infinite-scroll-component": "^6.1.0",
     "react-intersection-observer": "^9.13.1",
@@ -270,9 +270,9 @@
     "webpack-bundle-analyzer": "^4.10.2"
   },
   "peerDependencies": {
-    "antd": "^5.20.3",
-    "react": ">=18.0.0",
-    "react-dom": ">=18.0.0"
+    "antd": ">=4.22.8",
+    "react": ">=16.14.0",
+    "react-dom": ">=16.14.0"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"

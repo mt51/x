@@ -2,48 +2,49 @@ import { ConfigProvider as AntdConfigProvider } from 'antd';
 import React from 'react';
 
 import XProviderContext from './context';
-import useXProviderContext, { defaultPrefixCls } from './hooks/use-x-provider-context';
+import useXProviderContext, {
+  defaultPrefixCls,
+} from './hooks/use-x-provider-context';
 
 import type { ConfigProviderProps as AntdConfigProviderProps } from 'antd/es/config-provider';
 import type { XProviderProps } from './context';
 
-const XProvider: React.FC<XProviderProps & AntdConfigProviderProps> = (props) => {
+const XProvider: React.FC<XProviderProps & AntdConfigProviderProps> = (
+  props,
+) => {
   const {
-    attachments,
-    bubble,
-    conversations,
-    prompts,
-    sender,
-    suggestion,
-    thoughtChain,
+    // attachments,
+    // bubble,
+    // conversations,
+    // prompts,
+    // sender,
+    // suggestion,
+    // thoughtChain,
     welcome,
-    theme,
     ...antdConfProps
   } = props;
 
-  const { theme: parentTheme } = useXProviderContext();
-
   const xProviderProps = React.useMemo(() => {
     return {
-      attachments,
-      bubble,
-      conversations,
-      prompts,
-      sender,
-      suggestion,
-      thoughtChain,
+      // attachments,
+      // bubble,
+      // conversations,
+      // prompts,
+      // sender,
+      // suggestion,
+      // thoughtChain,
       welcome,
     };
-  }, [attachments, bubble, conversations, prompts, sender, suggestion, thoughtChain, welcome]);
-
-  const mergedTheme = React.useMemo(() => {
-    const concatTheme = {
-      ...parentTheme,
-      ...theme,
-    };
-
-    return concatTheme;
-  }, [parentTheme, theme]);
+  }, [
+    // attachments,
+    // bubble,
+    // conversations,
+    // prompts,
+    // sender,
+    // suggestion,
+    // thoughtChain,
+    welcome,
+  ]);
 
   return (
     <XProviderContext.Provider value={xProviderProps}>
@@ -54,7 +55,6 @@ const XProvider: React.FC<XProviderProps & AntdConfigProviderProps> = (props) =>
         //        the generate css is still using css var but no css var injected.
         // Origin comment: antdx enable cssVar by default, and antd v6 will enable cssVar by default
         // theme={{ cssVar: true, ...antdConfProps?.theme }}
-        theme={mergedTheme}
       />
     </XProviderContext.Provider>
   );

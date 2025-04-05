@@ -1,6 +1,7 @@
-import { Flex, Typography } from 'antd';
+import { Typography } from 'antd';
 import classnames from 'classnames';
 import React from 'react';
+import Flex from '../flex';
 
 import useXComponentConfig from '../_util/hooks/use-x-component-config';
 import { useXProviderContext } from '../x-provider';
@@ -68,7 +69,11 @@ function Welcome(props: WelcomeProps, ref: React.Ref<HTMLDivElement>) {
     }
     return (
       <div
-        className={classnames(`${prefixCls}-icon`, contextConfig.classNames.icon, classNames.icon)}
+        className={classnames(
+          `${prefixCls}-icon`,
+          contextConfig.classNames.icon,
+          classNames.icon,
+        )}
         style={styles.icon}
       >
         {iconEle}

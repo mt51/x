@@ -5,7 +5,8 @@ import { RightOutlined, LeftOutlined } from '@ant-design/icons';
 import CSSMotion from 'rc-motion';
 import pickAttrs from 'rc-util/lib/pickAttrs';
 
-import type { ConfigProviderProps, GetProp } from 'antd';
+import type { GetProp } from '../_util/type';
+import type { ConfigProviderProps } from 'antd/es/config-provider';
 import type { CSSMotionProps } from 'rc-motion';
 import type { ThoughtChainProps } from './';
 
@@ -84,7 +85,8 @@ export const ThoughtChainNodeContext = React.createContext<{
   classNames?: ThoughtChainProps['classNames'];
 }>(null!);
 
-interface ThoughtChainNodeProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick'> {
+interface ThoughtChainNodeProps
+  extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick'> {
   info?: ThoughtChainItem;
   nextStatus?: ThoughtChainItem['status'];
   onClick?: (key: string) => void;
@@ -165,7 +167,10 @@ const ThoughtChainNode: React.FC<ThoughtChainNodeProps> = (props) => {
           <Typography.Text
             strong
             ellipsis={{
-              tooltip: { placement: direction === 'rtl' ? 'topRight' : 'topLeft', title },
+              tooltip: {
+                placement: direction === 'rtl' ? 'topRight' : 'topLeft',
+                title,
+              },
             }}
             className={`${itemCls}-title`}
           >
@@ -205,7 +210,10 @@ const ThoughtChainNode: React.FC<ThoughtChainNodeProps> = (props) => {
       </div>
       {/* Content */}
       {content && (
-        <CSSMotion {...collapseMotion} visible={enableCollapse ? contentOpen : true}>
+        <CSSMotion
+          {...collapseMotion}
+          visible={enableCollapse ? contentOpen : true}
+        >
           {({ className: motionClassName, style }, motionRef) => (
             <div
               className={classnames(`${itemCls}-content`, motionClassName)}
@@ -213,7 +221,10 @@ const ThoughtChainNode: React.FC<ThoughtChainNodeProps> = (props) => {
               style={style}
             >
               <div
-                className={classnames(`${itemCls}-content-box`, classNames.itemContent)}
+                className={classnames(
+                  `${itemCls}-content-box`,
+                  classNames.itemContent,
+                )}
                 style={styles.itemContent}
               >
                 {content}

@@ -35,9 +35,7 @@ export interface XComponentsConfig {
   welcome?: ComponentStyleConfig<WelcomeProps>;
 }
 
-export interface XProviderProps extends XComponentsConfig {
-  // Non-component config props
-}
+export type XProviderProps = XComponentsConfig
 
 const XProviderContext = React.createContext<XProviderProps>({});
 

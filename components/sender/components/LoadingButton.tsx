@@ -12,7 +12,7 @@ function LoadingButton(props: ButtonProps, ref: React.Ref<HTMLButtonElement>) {
     <ActionButton
       icon={null}
       color="primary"
-      variant="text"
+      type="text"
       shape="circle"
       {...props}
       className={classNames(className, `${prefixCls}-loading-button`)}
