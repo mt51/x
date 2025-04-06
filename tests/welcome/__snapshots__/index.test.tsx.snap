@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`welcome rtl render component should be rendered correctly in RTL direction 1`] = `
+<div
+  class="ant-welcome ant-welcome-filled ant-welcome-rtl flex"
+>
+  <div
+    class="ant-welcome-content-wrapper flex flex-align-stretch flex-vertical"
+  />
+</div>
+`;
