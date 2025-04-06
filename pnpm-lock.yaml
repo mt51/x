@@ -72,6 +72,9 @@ importers:
       '@storybook/test':
         specifier: ^8.6.11
         version: 8.6.12(storybook@8.6.12(prettier@3.5.3))
+      '@types/node':
+        specifier: ^22.14.0
+        version: 22.14.0
       '@types/react':
         specifier: ^16.14.0
         version: 16.14.63
