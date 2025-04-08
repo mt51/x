@@ -20,8 +20,7 @@ function SpeechButton(props: ButtonProps, ref: React.Ref<HTMLButtonElement>) {
   return (
     <ActionButton
       icon={icon}
-      color="primary"
-      type="text"
+      type="primary"
       {...props}
       action="onSpeech"
       ref={ref}

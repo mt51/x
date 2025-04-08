@@ -11,8 +11,7 @@ function LoadingButton(props: ButtonProps, ref: React.Ref<HTMLButtonElement>) {
   return (
     <ActionButton
       icon={null}
-      color="primary"
-      type="text"
+      type="primary"
       shape="circle"
       {...props}
       className={classNames(className, `${prefixCls}-loading-button`)}
