@@ -12,6 +12,7 @@ export default defineConfig({
       bundle: false,
       dts: true,
       format: 'esm',
+      autoExtension: false,
     },
   ],
   output: {
