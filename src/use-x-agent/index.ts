@@ -14,6 +14,7 @@ export type RequestFn<Message> = (
     onUpdate: (message: Message) => void;
     onSuccess: (message: Message) => void;
     onError: (error: Error) => void;
+    onCreate: (message: Message) => void;
   },
 ) => void;
 
@@ -47,7 +48,7 @@ export class XAgent<Message = string> {
 
   public request: RequestFn<Message> = (info, callbacks) => {
     const { request } = this.config;
-    const { onUpdate, onSuccess, onError } = callbacks;
+    const { onUpdate, onSuccess, onError, onCreate } = callbacks;
 
     const id = uuid;
     uuid += 1;
@@ -73,6 +74,7 @@ export class XAgent<Message = string> {
           this.finishRequest(id);
         }
       },
+      onCreate
     });
   };
 

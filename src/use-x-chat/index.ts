@@ -192,6 +192,14 @@ export default function useXChat<
       return msg;
     };
 
+    const createNewMessage = (message: AgentMessage, status: MessageStatus) => {
+      const msg = createMessage(message, status);
+      setMessages((ori) => {
+        const oriWithoutPending = ori.filter((info) => info.id !== loadingMsgId);
+        return [...oriWithoutPending, msg!];
+      });
+    } 
+
     agent.request(
       {
         message,
@@ -230,6 +238,9 @@ export default function useXChat<
             });
           }
         },
+        onCreate: (message) => {
+          createNewMessage(message, 'success')
+        }
       },
     );
   });
