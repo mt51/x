@@ -41,7 +41,10 @@ export interface BubbleListProps extends React.HTMLAttributes<HTMLDivElement> {
 
 const TOLERANCE = 1;
 
-const BubbleList: React.ForwardRefRenderFunction<BubbleListRef, BubbleListProps> = (props, ref) => {
+const BubbleList: React.ForwardRefRenderFunction<
+  BubbleListRef,
+  BubbleListProps
+> = (props, ref) => {
   const {
     prefixCls: customizePrefixCls,
     rootClassName,
@@ -66,7 +69,7 @@ const BubbleList: React.ForwardRefRenderFunction<BubbleListRef, BubbleListProps>
 
   const prefixCls = getPrefixCls('bubble', customizePrefixCls);
   const listPrefixCls = `${prefixCls}-list`;
-
+  const listContainerPrefixCls = `${prefixCls}-list-container`;
   const [wrapCSSVar, hashId, cssVarCls] = useStyle(prefixCls);
 
   // ============================ Typing ============================
@@ -94,7 +97,8 @@ const BubbleList: React.ForwardRefRenderFunction<BubbleListRef, BubbleListProps>
     const target = e.target as HTMLElement;
 
     setScrollReachEnd(
-      target.scrollHeight - Math.abs(target.scrollTop) - target.clientHeight <= TOLERANCE,
+      target.scrollHeight - Math.abs(target.scrollTop) - target.clientHeight <=
+        TOLERANCE,
     );
   };
 
@@ -117,7 +121,8 @@ const BubbleList: React.ForwardRefRenderFunction<BubbleListRef, BubbleListProps>
       if (bubbleInst) {
         const { nativeElement } = bubbleInst;
         const { top, bottom } = nativeElement.getBoundingClientRect();
-        const { top: listTop, bottom: listBottom } = listRef.current!.getBoundingClientRect();
+        const { top: listTop, bottom: listBottom } =
+          listRef.current!.getBoundingClientRect();
 
         const isVisible = top < listBottom && bottom > listTop;
         if (isVisible) {
@@ -144,7 +149,9 @@ const BubbleList: React.ForwardRefRenderFunction<BubbleListRef, BubbleListProps>
 
         if (bubbleInst) {
           // Block current auto scrolling
-          const index = displayData.findIndex((dataItem) => dataItem.key === key);
+          const index = displayData.findIndex(
+            (dataItem) => dataItem.key === key,
+          );
           setScrollReachEnd(index === displayData.length - 1);
 
           // Do native scroll
@@ -177,30 +184,39 @@ const BubbleList: React.ForwardRefRenderFunction<BubbleListRef, BubbleListProps>
     <BubbleContext.Provider value={context}>
       <div
         {...domProps}
-        className={classNames(listPrefixCls, rootClassName, className, hashId, cssVarCls, {
-          [`${listPrefixCls}-reach-end`]: scrollReachEnd,
-        })}
+        className={classNames(
+          listPrefixCls,
+          rootClassName,
+          className,
+          hashId,
+          cssVarCls,
+          {
+            [`${listPrefixCls}-reach-end`]: scrollReachEnd,
+          },
+        )}
         ref={listRef}
         onScroll={onInternalScroll}
       >
-        {displayData.map(({ key, ...bubble }) => (
-          <Bubble
-            {...bubble}
-            key={key}
-            ref={(node) => {
-              if (node) {
-                bubbleRefs.current[key] = node;
-              } else {
-                delete bubbleRefs.current[key];
-              }
-            }}
-            typing={initialized ? bubble.typing : false}
-            onTypingComplete={() => {
-              bubble.onTypingComplete?.();
-              onTypingComplete(key);
-            }}
-          />
-        ))}
+        <div className={listContainerPrefixCls}>
+          {displayData.map(({ key, ...bubble }) => (
+            <Bubble
+              {...bubble}
+              key={key}
+              ref={(node) => {
+                if (node) {
+                  bubbleRefs.current[key] = node;
+                } else {
+                  delete bubbleRefs.current[key];
+                }
+              }}
+              typing={initialized ? bubble.typing : false}
+              onTypingComplete={() => {
+                bubble.onTypingComplete?.();
+                onTypingComplete(key);
+              }}
+            />
+          ))}
+        </div>
       </div>
     </BubbleContext.Provider>,
   );
