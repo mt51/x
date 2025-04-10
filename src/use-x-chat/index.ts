@@ -198,6 +198,7 @@ export default function useXChat<
         const oriWithoutPending = ori.filter((info) => info.id !== loadingMsgId);
         return [...oriWithoutPending, msg!];
       });
+      updatingMsgId = null
     } 
 
     agent.request(
