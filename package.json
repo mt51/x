@@ -15,12 +15,13 @@
   ],
   "scripts": {
     "build": "rslib build",
-    "build:storybook": "storybook build",
+    "build:website": "rspress build",
     "check": "biome check --write",
-    "dev": "rslib build --watch",
+    "preview": "rspress preview",
+    "dev": "rslib build --watch && rspress dev",
+    "dev:rspress": "rspress dev",
     "format": "prettier --write .",
-    "lint": "eslint .",
-    "storybook": "storybook dev"
+    "lint": "eslint ."
   },
   "dependencies": {
     "@ant-design/colors": "^7.1.0",
@@ -55,6 +56,7 @@
     "prettier": "^3.5.2",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
+    "rspress": "^1.43.11",
     "storybook": "^8.6.11",
     "storybook-addon-rslib": "^1.0.1",
     "storybook-react-rsbuild": "^1.0.1",
