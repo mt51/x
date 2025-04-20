@@ -2,12 +2,12 @@ import React from 'react';
 
 import Attachments, { type AttachmentsProps } from '../../src/attachments';
 import mountTest from '../shared/mountTest';
-// import rtlTest from '../shared/rtlTest';
+import rtlTest from '../shared/rtlTest';
 import { fireEvent, render, waitFakeTimer } from '../utils';
 
 describe('attachments', () => {
   mountTest(() => <Attachments />);
-  // rtlTest(() => <Attachments />);
+  rtlTest(() => <Attachments />);
   beforeAll(() => {
     jest.useFakeTimers();
   });
