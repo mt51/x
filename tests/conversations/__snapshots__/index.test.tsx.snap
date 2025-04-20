@@ -23,13 +23,13 @@ exports[`Conversations Component Conversations component work 1`] = `
       What is Ant Design X ?
       <span
         aria-hidden="true"
-        style="position: fixed; display: block; left: 0px; top: 0px; z-index: -9999; visibility: hidden; pointer-events: none; font-size: 0px; word-break: keep-all; white-space: nowrap;"
+        style="position: fixed; display: block; left: 0px; top: 0px; z-index: -9999; visibility: hidden; pointer-events: none; word-break: keep-all; white-space: nowrap;"
       >
         lg
       </span>
       <span
         aria-hidden="true"
-        style="position: fixed; display: block; left: 0px; top: 0px; z-index: -9999; visibility: hidden; pointer-events: none; font-size: 0px; width: 0px; white-space: normal; margin: 0px; padding: 0px;"
+        style="position: fixed; display: block; left: 0px; top: 0px; z-index: -9999; visibility: hidden; pointer-events: none; width: 0px; white-space: normal; margin: 0px; padding: 0px;"
       >
         <span
           aria-hidden="true"
@@ -57,13 +57,13 @@ exports[`Conversations Component Conversations component work 1`] = `
       </div>
       <span
         aria-hidden="true"
-        style="position: fixed; display: block; left: 0px; top: 0px; z-index: -9999; visibility: hidden; pointer-events: none; font-size: 0px; word-break: keep-all; white-space: nowrap;"
+        style="position: fixed; display: block; left: 0px; top: 0px; z-index: -9999; visibility: hidden; pointer-events: none; word-break: keep-all; white-space: nowrap;"
       >
         lg
       </span>
       <span
         aria-hidden="true"
-        style="position: fixed; display: block; left: 0px; top: 0px; z-index: -9999; visibility: hidden; pointer-events: none; font-size: 0px; width: 0px; white-space: normal; margin: 0px; padding: 0px;"
+        style="position: fixed; display: block; left: 0px; top: 0px; z-index: -9999; visibility: hidden; pointer-events: none; width: 0px; white-space: normal; margin: 0px; padding: 0px;"
       >
         <span
           aria-hidden="true"
@@ -83,13 +83,13 @@ exports[`Conversations Component Conversations component work 1`] = `
       In Docker, use 🐑 Ollama and initialize
       <span
         aria-hidden="true"
-        style="position: fixed; display: block; left: 0px; top: 0px; z-index: -9999; visibility: hidden; pointer-events: none; font-size: 0px; word-break: keep-all; white-space: nowrap;"
+        style="position: fixed; display: block; left: 0px; top: 0px; z-index: -9999; visibility: hidden; pointer-events: none; word-break: keep-all; white-space: nowrap;"
       >
         lg
       </span>
       <span
         aria-hidden="true"
-        style="position: fixed; display: block; left: 0px; top: 0px; z-index: -9999; visibility: hidden; pointer-events: none; font-size: 0px; width: 0px; white-space: normal; margin: 0px; padding: 0px;"
+        style="position: fixed; display: block; left: 0px; top: 0px; z-index: -9999; visibility: hidden; pointer-events: none; width: 0px; white-space: normal; margin: 0px; padding: 0px;"
       >
         <span
           aria-hidden="true"
@@ -109,13 +109,13 @@ exports[`Conversations Component Conversations component work 1`] = `
       Expired, please go to the recycle bin to check
       <span
         aria-hidden="true"
-        style="position: fixed; display: block; left: 0px; top: 0px; z-index: -9999; visibility: hidden; pointer-events: none; font-size: 0px; word-break: keep-all; white-space: nowrap;"
+        style="position: fixed; display: block; left: 0px; top: 0px; z-index: -9999; visibility: hidden; pointer-events: none; word-break: keep-all; white-space: nowrap;"
       >
         lg
       </span>
       <span
         aria-hidden="true"
-        style="position: fixed; display: block; left: 0px; top: 0px; z-index: -9999; visibility: hidden; pointer-events: none; font-size: 0px; width: 0px; white-space: normal; margin: 0px; padding: 0px;"
+        style="position: fixed; display: block; left: 0px; top: 0px; z-index: -9999; visibility: hidden; pointer-events: none; width: 0px; white-space: normal; margin: 0px; padding: 0px;"
       >
         <span
           aria-hidden="true"
@@ -135,13 +135,13 @@ exports[`Conversations Component Conversations component work 1`] = `
       No key
       <span
         aria-hidden="true"
-        style="position: fixed; display: block; left: 0px; top: 0px; z-index: -9999; visibility: hidden; pointer-events: none; font-size: 0px; word-break: keep-all; white-space: nowrap;"
+        style="position: fixed; display: block; left: 0px; top: 0px; z-index: -9999; visibility: hidden; pointer-events: none; word-break: keep-all; white-space: nowrap;"
       >
         lg
       </span>
       <span
         aria-hidden="true"
-        style="position: fixed; display: block; left: 0px; top: 0px; z-index: -9999; visibility: hidden; pointer-events: none; font-size: 0px; width: 0px; white-space: normal; margin: 0px; padding: 0px;"
+        style="position: fixed; display: block; left: 0px; top: 0px; z-index: -9999; visibility: hidden; pointer-events: none; width: 0px; white-space: normal; margin: 0px; padding: 0px;"
       >
         <span
           aria-hidden="true"
@@ -164,6 +164,7 @@ exports[`Conversations Component rtl render component should be rendered correct
     >
       <span
         class="ant-typography ant-typography-rtl"
+        direction="rtl"
       >
         pinned
       </span>
@@ -186,17 +187,18 @@ exports[`Conversations Component rtl render component should be rendered correct
         <span
           aria-label="What is Ant Design X ?"
           class="ant-typography ant-typography-rtl ant-typography-ellipsis ant-typography-single-line ant-conversations-label"
+          direction="rtl"
         >
           What is Ant Design X ?
           <span
             aria-hidden="true"
-            style="position: fixed; display: block; left: 0px; top: 0px; z-index: -9999; visibility: hidden; pointer-events: none; font-size: 0px; word-break: keep-all; white-space: nowrap;"
+            style="position: fixed; display: block; left: 0px; top: 0px; z-index: -9999; visibility: hidden; pointer-events: none; word-break: keep-all; white-space: nowrap;"
           >
             lg
           </span>
           <span
             aria-hidden="true"
-            style="position: fixed; display: block; left: 0px; top: 0px; z-index: -9999; visibility: hidden; pointer-events: none; font-size: 0px; width: 0px; white-space: normal; margin: 0px; padding: 0px;"
+            style="position: fixed; display: block; left: 0px; top: 0px; z-index: -9999; visibility: hidden; pointer-events: none; width: 0px; white-space: normal; margin: 0px; padding: 0px;"
           >
             <span
               aria-hidden="true"
@@ -240,6 +242,7 @@ exports[`Conversations Component rtl render component should be rendered correct
       >
         <span
           class="ant-typography ant-typography-rtl ant-typography-ellipsis ant-typography-single-line ant-conversations-label"
+          direction="rtl"
         >
           <div>
             Getting Started:
@@ -253,13 +256,13 @@ exports[`Conversations Component rtl render component should be rendered correct
           </div>
           <span
             aria-hidden="true"
-            style="position: fixed; display: block; left: 0px; top: 0px; z-index: -9999; visibility: hidden; pointer-events: none; font-size: 0px; word-break: keep-all; white-space: nowrap;"
+            style="position: fixed; display: block; left: 0px; top: 0px; z-index: -9999; visibility: hidden; pointer-events: none; word-break: keep-all; white-space: nowrap;"
           >
             lg
           </span>
           <span
             aria-hidden="true"
-            style="position: fixed; display: block; left: 0px; top: 0px; z-index: -9999; visibility: hidden; pointer-events: none; font-size: 0px; width: 0px; white-space: normal; margin: 0px; padding: 0px;"
+            style="position: fixed; display: block; left: 0px; top: 0px; z-index: -9999; visibility: hidden; pointer-events: none; width: 0px; white-space: normal; margin: 0px; padding: 0px;"
           >
             <span
               aria-hidden="true"
@@ -295,17 +298,18 @@ exports[`Conversations Component rtl render component should be rendered correct
         <span
           aria-label="In Docker, use 🐑 Ollama and initialize"
           class="ant-typography ant-typography-rtl ant-typography-ellipsis ant-typography-single-line ant-conversations-label"
+          direction="rtl"
         >
           In Docker, use 🐑 Ollama and initialize
           <span
             aria-hidden="true"
-            style="position: fixed; display: block; left: 0px; top: 0px; z-index: -9999; visibility: hidden; pointer-events: none; font-size: 0px; word-break: keep-all; white-space: nowrap;"
+            style="position: fixed; display: block; left: 0px; top: 0px; z-index: -9999; visibility: hidden; pointer-events: none; word-break: keep-all; white-space: nowrap;"
           >
             lg
           </span>
           <span
             aria-hidden="true"
-            style="position: fixed; display: block; left: 0px; top: 0px; z-index: -9999; visibility: hidden; pointer-events: none; font-size: 0px; width: 0px; white-space: normal; margin: 0px; padding: 0px;"
+            style="position: fixed; display: block; left: 0px; top: 0px; z-index: -9999; visibility: hidden; pointer-events: none; width: 0px; white-space: normal; margin: 0px; padding: 0px;"
           >
             <span
               aria-hidden="true"
@@ -341,17 +345,18 @@ exports[`Conversations Component rtl render component should be rendered correct
         <span
           aria-label="Expired, please go to the recycle bin to check"
           class="ant-typography ant-typography-rtl ant-typography-ellipsis ant-typography-single-line ant-conversations-label"
+          direction="rtl"
         >
           Expired, please go to the recycle bin to check
           <span
             aria-hidden="true"
-            style="position: fixed; display: block; left: 0px; top: 0px; z-index: -9999; visibility: hidden; pointer-events: none; font-size: 0px; word-break: keep-all; white-space: nowrap;"
+            style="position: fixed; display: block; left: 0px; top: 0px; z-index: -9999; visibility: hidden; pointer-events: none; word-break: keep-all; white-space: nowrap;"
           >
             lg
           </span>
           <span
             aria-hidden="true"
-            style="position: fixed; display: block; left: 0px; top: 0px; z-index: -9999; visibility: hidden; pointer-events: none; font-size: 0px; width: 0px; white-space: normal; margin: 0px; padding: 0px;"
+            style="position: fixed; display: block; left: 0px; top: 0px; z-index: -9999; visibility: hidden; pointer-events: none; width: 0px; white-space: normal; margin: 0px; padding: 0px;"
           >
             <span
               aria-hidden="true"
@@ -367,17 +372,18 @@ exports[`Conversations Component rtl render component should be rendered correct
         <span
           aria-label="No key"
           class="ant-typography ant-typography-rtl ant-typography-ellipsis ant-typography-single-line ant-conversations-label"
+          direction="rtl"
         >
           No key
           <span
             aria-hidden="true"
-            style="position: fixed; display: block; left: 0px; top: 0px; z-index: -9999; visibility: hidden; pointer-events: none; font-size: 0px; word-break: keep-all; white-space: nowrap;"
+            style="position: fixed; display: block; left: 0px; top: 0px; z-index: -9999; visibility: hidden; pointer-events: none; word-break: keep-all; white-space: nowrap;"
           >
             lg
           </span>
           <span
             aria-hidden="true"
-            style="position: fixed; display: block; left: 0px; top: 0px; z-index: -9999; visibility: hidden; pointer-events: none; font-size: 0px; width: 0px; white-space: normal; margin: 0px; padding: 0px;"
+            style="position: fixed; display: block; left: 0px; top: 0px; z-index: -9999; visibility: hidden; pointer-events: none; width: 0px; white-space: normal; margin: 0px; padding: 0px;"
           >
             <span
               aria-hidden="true"

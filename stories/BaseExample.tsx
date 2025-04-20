@@ -321,6 +321,7 @@ const Independent: React.FC = () => {
           prefix={attachmentsNode}
           loading={agent.isRequesting()}
           className="sender"
+          submitType="shiftEnter"
         />
       </div>
     </div>

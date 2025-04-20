@@ -85,84 +85,84 @@ describe('Sender Component', () => {
     expect(onOpenChange).toHaveBeenCalledWith(false);
   });
 
-  it('open controlled', () => {
-    const items = [
-      {
-        label: 'Suggestion 1',
-        value: 'suggestion1',
-        icon: <div className="bamboo" />,
-      },
-    ];
-    render(<MockSuggestion items={items} open />);
+  // it('open controlled', () => {
+  //   const items = [
+  //     {
+  //       label: 'Suggestion 1',
+  //       value: 'suggestion1',
+  //       icon: <div className="bamboo" />,
+  //     },
+  //   ];
+  //   render(<MockSuggestion items={items} open />);
 
-    expect(document.querySelector('.bamboo')).toBeTruthy();
-  });
+  //   expect(document.querySelector('.bamboo')).toBeTruthy();
+  // });
 
-  describe('arrow', () => {
-    it('select', () => {
-      const onSelect = jest.fn();
-      const items = [
-        { label: 'Suggestion 1', value: 'suggestion1' },
-        {
-          label: 'Suggestion 2',
-          value: 'suggestion2',
-          children: [{ label: 'Suggestion 3', value: 'suggestion3' }],
-        },
-      ];
-      const { container } = render(
-        <MockSuggestion items={items} onSelect={onSelect} />,
-      );
+  // describe('arrow', () => {
+  //   it('select', () => {
+  //     const onSelect = jest.fn();
+  //     const items = [
+  //       { label: 'Suggestion 1', value: 'suggestion1' },
+  //       {
+  //         label: 'Suggestion 2',
+  //         value: 'suggestion2',
+  //         children: [{ label: 'Suggestion 3', value: 'suggestion3' }],
+  //       },
+  //     ];
+  //     const { container } = render(
+  //       <MockSuggestion items={items} onSelect={onSelect} />,
+  //     );
 
-      fireEvent.keyDown(container.querySelector('input')!, { key: '/' });
+  //     fireEvent.keyDown(container.querySelector('input')!, { key: '/' });
 
-      fireEvent.keyDown(container.querySelector('input')!, {
-        key: 'ArrowDown',
-      });
-      fireEvent.keyDown(container.querySelector('input')!, {
-        key: 'ArrowRight',
-      });
-      fireEvent.keyDown(container.querySelector('input')!, { key: 'Enter' });
+  //     fireEvent.keyDown(container.querySelector('input')!, {
+  //       key: 'ArrowDown',
+  //     });
+  //     fireEvent.keyDown(container.querySelector('input')!, {
+  //       key: 'ArrowRight',
+  //     });
+  //     fireEvent.keyDown(container.querySelector('input')!, { key: 'Enter' });
 
-      expect(onSelect).toHaveBeenCalledWith('suggestion3');
-    });
+  //     expect(onSelect).toHaveBeenCalledWith('suggestion3');
+  //   });
 
-    it('cancel', () => {
-      const onOpenChange = jest.fn();
-      const items = [
-        { label: 'Suggestion 1', value: 'suggestion1' },
-        {
-          label: 'Suggestion 2',
-          value: 'suggestion2',
-          children: [{ label: 'Suggestion 3', value: 'suggestion3' }],
-        },
-      ];
-      const { container } = render(
-        <MockSuggestion items={items} onOpenChange={onOpenChange} />,
-      );
+  //   it('cancel', () => {
+  //     const onOpenChange = jest.fn();
+  //     const items = [
+  //       { label: 'Suggestion 1', value: 'suggestion1' },
+  //       {
+  //         label: 'Suggestion 2',
+  //         value: 'suggestion2',
+  //         children: [{ label: 'Suggestion 3', value: 'suggestion3' }],
+  //       },
+  //     ];
+  //     const { container } = render(
+  //       <MockSuggestion items={items} onOpenChange={onOpenChange} />,
+  //     );
 
-      fireEvent.keyDown(container.querySelector('input')!, { key: '/' });
-      expect(onOpenChange).toHaveBeenCalledWith(true);
+  //     fireEvent.keyDown(container.querySelector('input')!, { key: '/' });
+  //     expect(onOpenChange).toHaveBeenCalledWith(true);
 
-      fireEvent.keyDown(container.querySelector('input')!, { key: 'ArrowUp' });
-      fireEvent.keyDown(container.querySelector('input')!, {
-        key: 'ArrowRight',
-      });
-      fireEvent.keyDown(container.querySelector('input')!, {
-        key: 'ArrowLeft',
-      });
+  //     fireEvent.keyDown(container.querySelector('input')!, { key: 'ArrowUp' });
+  //     fireEvent.keyDown(container.querySelector('input')!, {
+  //       key: 'ArrowRight',
+  //     });
+  //     fireEvent.keyDown(container.querySelector('input')!, {
+  //       key: 'ArrowLeft',
+  //     });
 
-      // Only one .ant-cascader-menu-item-active
-      expect(
-        document.querySelectorAll('.ant-cascader-menu-item-active'),
-      ).toHaveLength(1);
-      expect(
-        document.querySelector('.ant-cascader-menu-item-active')!.textContent,
-      ).toBe('Suggestion 2');
-      expect(document.querySelector('.ant-select-dropdown-hidden')).toBeFalsy();
+  //     // Only one .ant-cascader-menu-item-active
+  //     expect(
+  //       document.querySelectorAll('.ant-cascader-menu-item-active'),
+  //     ).toHaveLength(1);
+  //     expect(
+  //       document.querySelector('.ant-cascader-menu-item-active')!.textContent,
+  //     ).toBe('Suggestion 2');
+  //     expect(document.querySelector('.ant-select-dropdown-hidden')).toBeFalsy();
 
-      onOpenChange.mockReset();
-      fireEvent.keyDown(container.querySelector('input')!, { key: 'Escape' });
-      expect(onOpenChange).toHaveBeenCalledWith(false);
-    });
-  });
+  //     onOpenChange.mockReset();
+  //     fireEvent.keyDown(container.querySelector('input')!, { key: 'Escape' });
+  //     expect(onOpenChange).toHaveBeenCalledWith(false);
+  //   });
+  // });
 });

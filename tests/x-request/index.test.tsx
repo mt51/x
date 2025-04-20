@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import xFetch from '../../src/x-request/x-fetch';
 import XRequest, {
   type XRequestCallbacks,
@@ -7,7 +6,7 @@ import XRequest, {
 
 import type { SSEOutput } from '../../src/x-stream';
 
-jest.mock('../x-fetch', () => jest.fn());
+jest.mock('../../src/x-request/x-fetch', () => jest.fn());
 
 const SSE_SEPARATOR = '\n\n';
 

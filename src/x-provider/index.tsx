@@ -13,36 +13,36 @@ const XProvider: React.FC<XProviderProps & AntdConfigProviderProps> = (
   props,
 ) => {
   const {
-    // attachments,
-    // bubble,
-    // conversations,
-    // prompts,
-    // sender,
-    // suggestion,
-    // thoughtChain,
+    attachments,
+    bubble,
+    conversations,
+    prompts,
+    sender,
+    suggestion,
+    thoughtChain,
     welcome,
     ...antdConfProps
   } = props;
 
   const xProviderProps = React.useMemo(() => {
     return {
-      // attachments,
-      // bubble,
-      // conversations,
-      // prompts,
-      // sender,
-      // suggestion,
-      // thoughtChain,
+      attachments,
+      bubble,
+      conversations,
+      prompts,
+      sender,
+      suggestion,
+      thoughtChain,
       welcome,
     };
   }, [
-    // attachments,
-    // bubble,
-    // conversations,
-    // prompts,
-    // sender,
-    // suggestion,
-    // thoughtChain,
+    attachments,
+    bubble,
+    conversations,
+    prompts,
+    sender,
+    suggestion,
+    thoughtChain,
     welcome,
   ]);
 

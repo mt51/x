@@ -285,6 +285,7 @@ exports[`ThoughtChain Component rtl render component should be rendered correctl
       >
         <span
           class="ant-typography ant-typography-rtl ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line ant-thought-chain-item-title"
+          direction="rtl"
         >
           <strong>
             <span
@@ -311,6 +312,7 @@ exports[`ThoughtChain Component rtl render component should be rendered correctl
         </span>
         <span
           class="ant-typography ant-typography-rtl ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line ant-thought-chain-item-desc"
+          direction="rtl"
         >
           description
         </span>
@@ -364,6 +366,7 @@ exports[`ThoughtChain Component rtl render component should be rendered correctl
       >
         <span
           class="ant-typography ant-typography-rtl ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line ant-thought-chain-item-title"
+          direction="rtl"
         >
           <strong>
             <span
@@ -390,6 +393,7 @@ exports[`ThoughtChain Component rtl render component should be rendered correctl
         </span>
         <span
           class="ant-typography ant-typography-rtl ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line ant-thought-chain-item-desc"
+          direction="rtl"
         >
           description
         </span>
@@ -443,6 +447,7 @@ exports[`ThoughtChain Component rtl render component should be rendered correctl
       >
         <span
           class="ant-typography ant-typography-rtl ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line ant-thought-chain-item-title"
+          direction="rtl"
         >
           <strong>
             <span
@@ -469,6 +474,7 @@ exports[`ThoughtChain Component rtl render component should be rendered correctl
         </span>
         <span
           class="ant-typography ant-typography-rtl ant-typography-secondary ant-typography-ellipsis ant-typography-single-line ant-typography-ellipsis-single-line ant-thought-chain-item-desc"
+          direction="rtl"
         >
           description
         </span>

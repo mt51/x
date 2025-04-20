@@ -1,5 +1,5 @@
 import { Cascader } from 'antd';
-import type { CascaderProps } from 'antd';
+// import type { CascaderProps } from 'antd';
 import classnames from 'classnames';
 import { useEvent, useMergedState } from 'rc-util';
 import React, { useState } from 'react';
@@ -8,7 +8,7 @@ import { useXProviderContext } from '../x-provider';
 import useStyle from './style';
 import useActive from './useActive';
 
-import Flex from '../flex';
+// import Flex from '../flex';
 
 export type SuggestionItem = {
   label: React.ReactNode;
@@ -58,7 +58,7 @@ function Suggestion<T = any>(props: SuggestionProps<T>) {
   // ============================= MISC =============================
   const { direction, getPrefixCls } = useXProviderContext();
   const prefixCls = getPrefixCls('suggestion', customizePrefixCls);
-  const itemCls = `${prefixCls}-item`;
+  // const itemCls = `${prefixCls}-item`;
 
   const isRTL = direction === 'rtl';
 
@@ -101,25 +101,25 @@ function Suggestion<T = any>(props: SuggestionProps<T>) {
   );
 
   // =========================== Cascader ===========================
-  const optionRender: CascaderProps<SuggestionItem>['dropdownRender'] = () => {
-    return (
-      <>
-        {itemList.map((node) => {
-          return (
-            <Flex className={itemCls}>
-              {node.icon && (
-                <div className={`${itemCls}-icon`}>{node.icon}</div>
-              )}
-              {node.label}
-              {node.extra && (
-                <div className={`${itemCls}-extra`}>{node.extra}</div>
-              )}
-            </Flex>
-          );
-        })}
-      </>
-    );
-  };
+  // const optionRender: CascaderProps<SuggestionItem>['dropdownRender'] = () => {
+  //   return (
+  //     <div>
+  //       {itemList.map((node) => {
+  //         return (
+  //           <Flex className={itemCls}>
+  //             {node.icon && (
+  //               <div className={`${itemCls}-icon`}>{node.icon}</div>
+  //             )}
+  //             {node.label}
+  //             {node.extra && (
+  //               <div className={`${itemCls}-extra`}>{node.extra}</div>
+  //             )}
+  //           </Flex>
+  //         );
+  //       })}
+  //     </div>
+  //   );
+  // };
 
   const onInternalChange = (valuePath: any[]) => {
     if (onSelect) {
@@ -152,7 +152,7 @@ function Suggestion<T = any>(props: SuggestionProps<T>) {
           onClose();
         }
       }}
-      dropdownRender={optionRender}
+      // dropdownRender={optionRender}
       className={classnames(rootClassName, prefixCls, hashId, cssVarCls, {
         [`${prefixCls}-block`]: block,
       })}

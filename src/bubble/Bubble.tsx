@@ -20,7 +20,10 @@ export interface BubbleContextProps {
 
 export const BubbleContext = React.createContext<BubbleContextProps>({});
 
-const Bubble: React.ForwardRefRenderFunction<BubbleRef, BubbleProps> = (props, ref) => {
+const Bubble: React.ForwardRefRenderFunction<BubbleRef, BubbleProps> = (
+  props,
+  ref,
+) => {
   const {
     prefixCls: customizePrefixCls,
     className,
@@ -61,7 +64,8 @@ const Bubble: React.ForwardRefRenderFunction<BubbleRef, BubbleProps> = (props, r
   const contextConfig = useXComponentConfig('bubble');
 
   // ============================ Typing ============================
-  const [typingEnabled, typingStep, typingInterval, customSuffix] = useTypingConfig(typing);
+  const [typingEnabled, typingStep, typingInterval, customSuffix] =
+    useTypingConfig(typing);
 
   const [typedContent, isTyping] = useTypedEffect(
     content,
@@ -101,20 +105,31 @@ const Bubble: React.ForwardRefRenderFunction<BubbleRef, BubbleProps> = (props, r
     `${prefixCls}-${placement}`,
     {
       [`${prefixCls}-rtl`]: direction === 'rtl',
-      [`${prefixCls}-typing`]: isTyping && !loading && !messageRender && !customSuffix,
+      [`${prefixCls}-typing`]:
+        isTyping && !loading && !messageRender && !customSuffix,
     },
   );
 
   // ============================ Avatar ============================
-  const avatarNode = React.isValidElement(avatar) ? avatar : <Avatar {...avatar} />;
+  const avatarNode = React.isValidElement(avatar) ? (
+    avatar
+  ) : (
+    <Avatar {...avatar} />
+  );
 
   // =========================== Content ============================
-  const mergedContent = messageRender ? messageRender(typedContent as any) : typedContent;
+  const mergedContent = messageRender
+    ? messageRender(typedContent as any)
+    : typedContent;
 
   // ============================ Render ============================
   let contentNode: React.ReactNode;
   if (loading) {
-    contentNode = loadingRender ? loadingRender() : <Loading prefixCls={prefixCls} />;
+    contentNode = loadingRender ? (
+      loadingRender()
+    ) : (
+      <Loading prefixCls={prefixCls} />
+    );
   } else {
     contentNode = (
       <>

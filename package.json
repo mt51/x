@@ -63,7 +63,7 @@
     "@types/node": "^22.14.0",
     "@types/react": "^16.14.0",
     "@types/react-dom": "^16.0.9",
-    "antd": "^4.22.8",
+    "antd": "4.22.8",
     "dayjs": "^1.11.13",
     "eslint": "^9.21.0",
     "eslint-plugin-jest": "^28.11.0",
